@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="index.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="video_container">
+				<video autoplay class="video_cam"></video>
+				<button class="capture">Capture</button>
+			</div>
+			<div class="image_container">
+				<canvas class="canvas" width="224" height="224"></canvas>
+				<img src="" alt="captured_image" class="captured_image" />
+			</div>
+			<div class="result_container">
+				<h4 class="result"></h4>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.7.0"></script>
+
+		<!-- Imports tfjs-vis -->
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.5.1/dist/tfjs-vis.umd.min.js"></script>
+		<script src="./index.js"></script>
+	</body>
+</html>
