@@ -14,17 +14,11 @@ const clearImage = () => {
 	const ctx = canvas.getContext('2d');
 	ctx.fillStyle('#aaa');
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
-	const img = canvas.toDataURL('image/png');
-	// photo.setAttribute('src', img);
 };
 
 const takeImage = () => {
 	const ctx = canvas.getContext('2d');
 	ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-	const img = canvas.toDataURL('image/png');
-	// photo.setAttribute('src', img);
-
-	// clearImage();
 };
 
 const main = async () => {
@@ -39,11 +33,11 @@ const main = async () => {
 
 	capture.addEventListener('click', () => {
 		takeImage();
-		let data = tf.browser.fromPixels(canvas);
-		data = data.reshape([-1, ...data.shape]).div(255);
-		// tf.reshape()
+		let data = tf.browser.fromPixels(canvas).div(255);
+		data = data.reshape([1, ...data.shape]);
+
 		const pred = model.predict(data).dataSync();
-		console.log(pred);
+
 		result.textContent = pred[0] <= 0.5 ? 'No Mask' : 'Mask';
 	});
 };
